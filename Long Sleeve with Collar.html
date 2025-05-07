@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Long Sleeve with Collar - VÈDA FASHION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #CF0F47;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #000;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-family: 'Lora', serif;
+    }
+    .product-detail {
+      display: flex;
+      padding: 40px 20px;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .product-images {
+      width: 100%;
+      max-width: 300px;
+    }
+    .carousel-container {
+      overflow: hidden;
+      width: 100%;
+      border-radius: 10px;
+    }
+    .carousel-track {
+      display: flex;
+      transition: transform 0.4s ease;
+    }
+    .carousel-track img {
+      width: 300px;
+      height: auto;
+      flex-shrink: 0;
+      border-radius: 10px;
+      cursor: zoom-in;
+    }
+    .carousel-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+    .carousel-controls button {
+      background-color: #CF0F47;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .product-info {
+      max-width: 500px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .product-info h2 {
+      font-size: 2rem;
+      font-family: 'Merriweather', serif;
+    }
+    .price {
+      font-size: 1.5rem;
+      color: #CF0F47;
+      margin: 10px 0;
+    }
+    .description {
+      font-size: 1.1rem;
+      margin: 15px 0;
+    }
+    .reviews {
+      margin-top: 20px;
+    }
+    .btn {
+      background-color: black;
+      border: none;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background-color 0.2s, color 0.2s;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background-color: #CF0F47;
+      color: white;
+    }
+    #star-rating span {
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: gold;
+    }
+    textarea {
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px;
+      font-family: Arial;
+      resize: none;
+    }
+    input[type="file"] {
+      margin-top: 10px;
+    }
+    .media-preview {
+      margin-top: 10px;
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    #image-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #image-modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+    }
+    #image-modal span {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+    .selector-container {
+      margin-top: 20px;
+    }
+    .selector-container select,
+    .selector-container input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>VÈDA FASHION</h1>
+    <a href="index.html" style="color: white;">Back to Home</a>
+  </header>
+
+  <div class="product-detail">
+    <div class="product-images">
+      <div class="carousel-container">
+        <div class="carousel-track" id="carousel">
+          <img src="Long Sleeve with Collar.jpg" alt="Main View">
+  <img src="491340151_3893019574249503_5577161905925317442_n.jpg" alt="Side View">
+          <img src="489159466_990098609917392_4472352078705733705_n.jpg" alt="Back View">
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button id="prev">&#10094;</button>
+        <button id="next">&#10095;</button>
+      </div>
+    </div>
+
+    <div class="product-info">
+      <h2>Long Sleeve with Collar</h2>
+      <p class="price">102php</p>
+      <p class="description">
+        Chic brown flats with beautiful flower details on top, perfect for adding a touch of charm to any casual look.
+      </p>
+
+      <div class="selector-container">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" value="1" min="1" max="10" />
+        <label for="size">Size:</label>
+        <select id="size">
+           <option value="XXS">LABEL SIZE XXS</option>
+          <option value="XS">LABEL SIZE XS</option>
+          <option value="S">LABEL SIZE S</option>
+          <option value="M">LABEL SIZE M</option>
+          <option value="L">LABEL SIZE L</option>
+          <option value="XL">LABEL SIZE XL</option>
+          <option value="1X">LABEL SIZE 1X</option>
+          <option value="2X">LABEL SIZE 2X</option>
+          <option value="3X">LABEL SIZE 3X</option>
+          <option value="4X">LABEL SIZE 4X</option>
+        </select>
+      </div>
+
+      <button class="btn add-to-cart">Add to Cart</button>
+      <button class="btn buy-now">Buy Now</button>
+
+      <div class="reviews">
+        <h3>Leave a Review</h3>
+        <div id="star-rating">
+          <span data-star="1">&#9734;</span>
+          <span data-star="2">&#9734;</span>
+          <span data-star="3">&#9734;</span>
+          <span data-star="4">&#9734;</span>
+          <span data-star="5">&#9734;</span>
+        </div>
+        <textarea id="comment" placeholder="Write your thoughts here..." rows="3"></textarea>
+        <input type="file" id="media" accept="image/*,video/*">
+        <div id="media-preview"></div>
+        <button class="btn" style="margin-top: 10px;" onclick="submitReview()">Submit Review</button>
+        <h3 style="margin-top: 20px;">User Reviews</h3>
+        <div id="review-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer style=" text-align: center;  padding: 20px;     background-color: black;      color: white;     font-family: 'Playfair Display', serif;          font-size: 1.2rem;"><p>&copy; 2025 VÈDA FASHION</p></footer>
+
+  <div id="image-modal">
+    <span onclick="closeModal()">&times;</span>
+    <img id="modal-image" src="" alt="Full View">
+  </div>
+
+  <script>
+    let selectedRating = 0;
+    const stars = document.querySelectorAll('#star-rating span');
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        selectedRating = parseInt(star.getAttribute('data-star'));
+        stars.forEach((s, i) => {
+          s.innerHTML = i < selectedRating ? '★' : '☆';
+        });
+      });
+    });
+
+    const mediaInput = document.getElementById('media');
+    const mediaPreview = document.getElementById('media-preview');
+    let uploadedMedia = '';
+
+    mediaInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          uploadedMedia = e.target.result;
+          if (file.type.startsWith("image")) {
+            mediaPreview.innerHTML = `<img src="${uploadedMedia}" class="media-preview" onclick="openModal('${uploadedMedia}')">`;
+          } else if (file.type.startsWith("video")) {
+            mediaPreview.innerHTML = `<video controls class="media-preview"><source src="${uploadedMedia}" type="${file.type}"></video>`;
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function submitReview() {
+      const comment = document.getElementById('comment').value.trim();
+      if (selectedRating === 0 || comment === '') {
+        alert('Please provide both a star rating and a comment!');
+        return;
+      }
+
+      const review = {
+        rating: selectedRating,
+        comment: comment,
+        media: uploadedMedia,
+        mediaType: mediaInput.files[0] ? mediaInput.files[0].type : null,
+        timestamp: new Date().toLocaleString()
+      };
+
+      let reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+      reviews.unshift(review);
+      localStorage.setItem('reviews', JSON.stringify(reviews));
+
+      document.getElementById('comment').value = '';
+      uploadedMedia = '';
+      mediaPreview.innerHTML = '';
+      mediaInput.value = '';
+      selectedRating = 0;
+      stars.forEach(s => s.innerHTML = '☆');
+      loadReviews();
+    }
+
+    function loadReviews() {
+      const container = document.getElementById('review-list');
+      container.innerHTML = '';
+      const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+      if (reviews.length === 0) {
+        container.innerHTML = '<p>No reviews yet. Be the first!</p>';
+      } else {
+        reviews.forEach(r => {
+          const stars = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+          let mediaHTML = '';
+          if (r.media) {
+            if (r.mediaType && r.mediaType.startsWith('image')) {
+              mediaHTML = `<img src="${r.media}" style="max-width: 100%; margin-top: 10px; border-radius: 5px;">`;
+            } else if (r.mediaType && r.mediaType.startsWith('video')) {
+              mediaHTML = `<video controls style="max-width: 100%; margin-top: 10px; border-radius: 5px;"><source src="${r.media}" type="${r.mediaType}"></video>`;
+            }
+          }
+          container.innerHTML += `
+            <div style="margin-bottom: 15px; padding: 10px; background: #f9f9f9; border-radius: 5px;">
+              <p style="margin: 0;"><strong>${stars}</strong> <em style="font-size: 0.85rem; color: gray;">(${r.timestamp})</em></p>
+              <p style="margin: 5px 0 0;">${r.comment}</p>
+              ${mediaHTML}
+            </div>
+          `;
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadReviews);
+
+    function openModal(src) {
+      const modal = document.getElementById('image-modal');
+      const modalImage = document.getElementById('modal-image');
+      modalImage.src = src;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('image-modal');
+      modal.style.display = 'none';
+    }
+
+    const prevButton = document.getElementById("prev");
+    const nextButton = document.getElementById("next");
+    const carousel = document.getElementById("carousel");
+
+    let currentIndex = 0;
+    const totalImages = carousel.children.length;
+
+    prevButton.addEventListener("click", () => {
+      currentIndex = (currentIndex === 0) ? totalImages - 1 : currentIndex - 1;
+      carousel.style.transform = `translateX(-${currentIndex * 300}px)`;
+    });
+
+    nextButton.addEventListener("click", () => {
+      currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
+      carousel.style.transform = `translateX(-${currentIndex * 300}px)`;
+    });
+	
+		function getProductDetails() {
+  const name = "Women's Square Toe Mid Heels Dress Shoes";
+  const img = document.querySelector("#carousel img").src;
+  const price = "₱102";
+  const quantity = parseInt(document.getElementById("quantity").value) || 1;
+  const size = document.getElementById("size").value;
+
+  return { name, img, price, quantity, size };
+}
+
+document.querySelector('.add-to-cart').addEventListener('click', () => {
+  const product = getProductDetails();
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  cart.push(product);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert("Item added to cart!");
+});
+
+document.querySelector('.buy-now').addEventListener('click', () => {
+  const product = getProductDetails();
+  localStorage.setItem('cart', JSON.stringify([product])); // override with just this item
+  window.location.href = 'checkout.html';
+});
+  
+  </script>
+</body>
+</html>

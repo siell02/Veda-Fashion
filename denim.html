@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Denim - VÈDA FASHION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #D91656;
+      color: #333;
+    }
+    header {
+      background-color: #000000;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+	  font-family: 'Lora', serif;
+    }
+    .home-icon a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+    }
+    .home-icon svg {
+      fill: white;
+      width: 100%;
+      height: 100%;
+      transition: fill 0.3s ease;
+      transform: scale(0.95);
+    }
+    .home-icon:hover svg {
+      fill: #CF0F47;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 20px;
+    }
+    .product-card {
+      background-color: black;
+      border-radius: 10px;
+      width: 220px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 10px 15px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .product-info h2 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  min-height: 45px;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  font-weight: 400; 
+}
+
+    .price {
+      font-weight: bold;
+      margin: 10px 0;
+      color: #CF0F47;
+      text-align: center;
+	  font-family: 'Merriweather', serif;
+    }
+    .btn-group {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+   .btn {
+  background-color: white;
+  border: none;
+  color: Black;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: 'Merriweather', serif;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+    .btn:hover {
+      background-color: #CF0F47;
+    }
+  footer {
+  text-align: center;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Denim</h1>
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <div class="home-icon">
+      <a href="index.html" title="Back to Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 3L2 9h3v11h6V14h2v6h6V9h3z"/>
+        </svg>
+      </a>
+    </div>
+    
+    <div class="home-icon">
+      <a href="cart.html" title="View Cart">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 
+            0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 
+            2-2-.9-2-2-2zM7.16 14.26l-.94-2.44L17 11l1.1 
+            2.59c.11.26.17.55.17.85 0 1.1-.9 2-2 
+            2H9.42c-.75 0-1.43-.41-1.76-1.06l-.5-1.12zM6.16 
+            9l1.1-2h11.45c.75 0 1.41.41 1.75 1.03l3.24 
+            6.5c.09.19.14.39.14.6 0 .83-.67 1.5-1.5 
+            1.5H8.53l-.94-2.44L6.16 9z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="product-grid">
+  <div class="product-card">
+  <a href="Backless Denim Corset.html">
+    <img src="Backless Denim Corset.jpg" alt="Backless Denim Corset">
+    <div class="product-info"></a>
+      <h2>Backless Denim Corset</h2>
+      <p class="price">113php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+  <a href="Cargo Chic.html">
+    <img src="Cargo Chic.jpg" alt="Cargo Chic">
+    <div class="product-info"></a>
+      <h2>Cargo Chic</h2>
+      <p class="price">110php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+  <a href="Cross-stitch Denim.html">
+    <img src="Cross-stitch Denim.jpg" alt="Cross-stitch Denim">
+    <div class="product-info"></a>
+      <h2>Cross-stitch Denim</h2>
+      <p class="price">121php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+  <a href="Cupid’s Cargo.html">
+    <img src="Cupid’s Cargo .jpg" alt="Cupid’s Cargo ">
+    <div class="product-info"></a>
+      <h2>Cupid’s Cargo </h2>
+      <p class="price">88php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+  <a href="Denim butterfly.html">
+    <img src="Denim butterfly .jpg" alt="Denim butterfly ">
+    <div class="product-info"></a>
+      <h2>Denim butterfly </h2>
+      <p class="price">130php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="product-card">
+  <a href="Denim button-frontt halter.html">
+    <img src="Denim button-frontt halter.jpg" alt="Denim button-frontt halter">
+    <div class="product-info"></a>
+      <h2>Denim button-frontt halter</h2>
+      <p class="price">101php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+   <div class="product-card">
+   <a href="Denim Darling.html">
+    <img src="Denim Darling.jpg" alt="Denim Darling">
+    <div class="product-info"></a>
+      <h2>Denim Darling</h2>
+      <p class="price">109php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+    
+   <div class="product-card">
+   <a href="Denim delight.html">
+    <img src="Denim delight .jpg" alt="Denim delight ">
+    <div class="product-info"></a>
+      <h2>Denim delight </h2>
+      <p class="price">100php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+    <div class="product-card">
+	<a href="Denim Delight set.html">
+    <img src="Denim Delight set.jpg" alt="Denim Delight set">
+    <div class="product-info"></a>
+      <h2>Denim Delight set</h2>
+      <p class="price">121php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+     <div class="product-card">
+	 <a href="Denim flirt.html">
+    <img src="Denim flirt.jpg" alt="Denim flirt">
+    <div class="product-info"></a>
+      <h2>Denim flirt</h2>
+      <p class="price">102php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="product-card">
+  <a href="Denim Mini-over.html">
+    <img src="Denim Mini-over.jpg" alt="Denim Mini-over">
+    <div class="product-info"></a>
+      <h2>Denim Mini-over<h2>
+      <p class="price">97php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="product-card">
+  <a href="Denim Overlay.html">
+    <img src="Denim Overlay.jpg" alt="Denim Overlay">
+    <div class="product-info"></a>
+      <h2>Denim Overlay</h2>
+      <p class="price">99php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+    <div class="product-card">
+	<a href="Denim Silhouette.html">
+    <img src="Denim Silhouette .jpg" alt="Denim Silhouette ">
+    <div class="product-info"></a>
+      <h2>Denim Silhouette </h2>
+      <p class="price">94php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+    <div class="product-card">
+	<a href="Denim Siren.html">
+    <img src="Denim Siren.jpg" alt="Denim Siren">
+    <div class="product-info"></a>
+      <h2>Denim Siren</h2>
+      <p class="price">103php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Denim wrap.html">
+    <img src="Denim wrap.jpg" alt="Denim wrap">
+    <div class="product-info"></a>
+      <h2>Denim wrap</h2>
+      <p class="price">122php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Halter Harmony.html">
+    <img src="Halter Harmony.jpg" alt="Halter Harmony">
+    <div class="product-info"></a>
+      <h2>Halter Harmony</h2>
+      <p class="price">137php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="High-slit siren.html">
+    <img src="High-slit siren .jpg" alt="High-slit siren ">
+    <div class="product-info"></a>
+      <h2>High-slit siren </h2>
+      <p class="price">112php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Indigo Ribbon.html">
+    <img src="Indigo Ribbon.jpg" alt="Indigo Ribbon">
+    <div class="product-info"></a>
+      <h2>Indigo Ribbon</h2>
+      <p class="price">131php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Midnight Bloom.html">
+    <img src="Midnight Bloom.jpg" alt="Midnight Bloom">
+    <div class="product-info"></a>
+      <h2>Midnight Bloom</h2>
+      <p class="price">110php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Mini denim skort.html">
+    <img src="Mini denim skort.jpg" alt="Mini denim skort">
+    <div class="product-info"></a>
+      <h2>Mini denim skort</h2>
+      <p class="price">104php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Rebellious Denim.html">
+    <img src="Rebellious Denim.jpg" alt="Rebellious Denim">
+    <div class="product-info"></a>
+      <h2>Rebellious Denim</h2>
+      <p class="price">140php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Ruffle Romance.html">
+    <img src="Ruffle Romance .jpg" alt="Ruffle Romance ">
+    <div class="product-info"></a>
+      <h2>Ruffle Romance </h2>
+      <p class="price">115php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Ruffled rebel.html">
+    <img src="Ruffled rebel.jpg" alt="Ruffled rebel">
+    <div class="product-info"></a>
+      <h2>Ruffled rebel</h2>
+      <p class="price">125php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Shoulder shrug.html">
+    <img src="Shoulder shrug .jpg" alt="Shoulder shrug ">
+    <div class="product-info"></a>
+      <h2>Shoulder shrug </h2>
+      <p class="price">146php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Sun-kissed Denim.html">
+    <img src="Sun-kissed Denim.jpg" alt="Sun-kissed Denim">
+    <div class="product-info"></a>
+      <h2>Sun-kissed Denim</h2>
+      <p class="price">96php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="The Crossroads.html">
+    <img src="The Crossroads .jpg" alt="The Crossroads ">
+    <div class="product-info"></a>
+      <h2>The Crossroads </h2>
+      <p class="price">90php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Washed Denim.html">
+    <img src="Washed Denim.jpg" alt="Washed Denim">
+    <div class="product-info"></a>
+      <h2>Washed Denim</h2>
+      <p class="price">102php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="The Denim Waltz.html">
+    <img src="The Denim Waltz.jpg" alt="The Denim Waltz">
+    <div class="product-info"></a>
+      <h2>The Denim Waltz</h2>
+      <p class="price">122php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+      <div class="product-card">
+	  <a href="Whisper back Denim.html">
+    <img src="Whisper back Denim .jpg" alt="Whisper back Denim ">
+    <div class="product-info"></a>
+      <h2>Whisper back Denim </h2>
+      <p class="price">134php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+        <button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+  
+<footer>
+  <p>&copy; 2025 VÈDA FASHION</p>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.product-card');
+        const name = card.querySelector('h2').innerText;
+        const price = card.querySelector('.price').innerText;
+        const img = card.querySelector('img').src;
+
+        const product = { name, price, img };
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert(`${name} added to cart!`);
+      });
+    });
+  });
+</script>
+
+
+</body>
+</html>
+
+<script>
+const buyNowButtons = document.querySelectorAll('.buy-now');
+
+buyNowButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.product-card');
+    const name = card.querySelector('h2').innerText;
+    const price = card.querySelector('.price').innerText;
+    const img = card.querySelector('img').src;
+
+    const product = [{ name, price, img }];
+    localStorage.setItem('cart', JSON.stringify(product));
+    window.location.href = 'checkout.html';
+  });
+});
+</script>
+</body>
+</html>

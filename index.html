@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>VÈDA FASHION</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #D91656;
+    }
+
+    header {
+      background-color: #000000;
+      color: white;
+      padding: 10px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header .logo h1 {
+      font-size: 2.2rem;
+      color: white;
+  font-family: 'Lora', serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    nav ul li {
+      margin-left: 10px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 1.1rem;
+	   font-family: 'Satisfy', cursive;
+    }
+
+    nav ul li a:hover {
+      color: #CF0F47;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 20px;
+      background-color: #CF0F47;
+    }
+
+    .hero h2 {
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 0;
+   line-height: 1.2;
+}
+
+.welcome {
+  font-family: 'Dancing Script', cursive;
+}
+
+.veda {
+  font-family: 'Lora', serif;
+}
+
+.hero-subtitle {
+  font-size: 1.7rem;
+  color: white;
+  font-family: 'Dancing Script', cursive;
+   margin-top: 10px;
+}
+
+    .hero p {
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    section {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+	   font-family: 'Satisfy', serif;
+  font-weight: 600;
+  letter-spacing: 1px;
+    }
+
+    .product-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background-color: black;
+      color: white;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      border-radius: 8px;
+      transition: transform 0.2s ease;
+      width: 200px;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .card p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+	  font-family: 'Satisfy', serif;
+    }
+
+    footer {
+      text-align: center;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+        max-width: 300px;
+      }
+
+      nav ul {
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      header {
+        padding: 15px 20px;
+      }
+    }
+	
+	.hamburger-menu {
+  position: relative;
+}
+
+.hamburger-icon {
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 35px;
+  background-color: black;
+  min-width: 150px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.dropdown-menu a {
+  color: #CF0F47;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+  font-family: 'Satisfy', cursive;
+}
+
+.dropdown-menu a:hover {
+  background-color: #222;
+}
+.profile-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  transition: transform 0.2s ease;
+}
+
+.profile-icon img:hover {
+  transform: scale(1.1);
+  border-color: #CF0F47;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <h1>
+        <img src="logo.jpg" alt="logo" height="80" width="80" />
+        VÈDA FASHION
+      </h1>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#shoes">Shoes</a></li>
+        <li><a href="#clothes">Clothes</a></li>
+        <li><a href="#makeup">Makeup</a></li>
+        <li><a href="aboutus.html">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+		<li class="hamburger-menu">
+  <div class="hamburger-icon" onclick="toggleMenu()">&#9776;</div>
+  <div class="dropdown-menu" id="dropdownMenu">
+    <a href="purchased.html">Purchased Items</a>
+	<a href="cart.html">Cart</a>
+	<a href="chatbox.html">Message Us</a>
+  </div>
+   <li class="profile-icon">
+          <a href="profile.html">
+            <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Profile" />
+          </a>
+        </li>
+</li>
+
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+  <h2>
+    <span class="welcome">Welcome to</span><br>
+    <span class="veda">VÈDA FASHION</span>
+  </h2>
+  <p class="hero-subtitle">Your one-stop shop for the latest women's fashion.</p>
+</section>
+
+
+  <section id="shoes">
+    <h2>Shoes</h2>
+    <div class="product-cards">
+      <a href="flat-shoes.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/2d/b1/ec/2db1ecf7b80cc3ac25e90d233274359d.jpg" alt="Flat Shoes" />
+          <p>Flat Shoes</p>
+        </div>
+      </a>
+      <a href="heels.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/53/fb/59/53fb5928d5ee466ef99c7a7bfff968e6.jpg" />
+          <p>Heels</p>
+        </div>
+      </a>
+      <a href="sandals.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/c1/15/45/c11545cb8c11dc9f9bcecaaf2b019ad5.jpg" />
+          <p>Sandals</p>
+        </div>
+      </a>
+      <a href="rubber-shoes.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/95/33/7e/95337e1c4f2f3ebcff0e22b6967d0639.jpg" />
+          <p>Rubber Shoes</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="clothes">
+    <h2>Clothing</h2>
+    <div class="product-cards">
+      <a href="denim.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/84/56/f7/8456f7807d80c96106b1e80cc11f191a.jpg" />
+          <p>Denim</p>
+        </div>
+      </a>
+      <a href="dress.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/07/02/d0/0702d0be65ab76824139512687f75add.jpg" />
+          <p>Dress</p>
+        </div>
+      </a>
+      <a href="formal.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/fd/39/b1/fd39b1d79e80797e4798e273bc03c5d1.jpg" />
+          <p>Formal</p>
+        </div>
+      </a>
+      <a href="sets.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/61/ce/d7/61ced72151d4f4215fcdd27b4617673e.jpg" />
+          <p>Sets</p>
+        </div>
+      </a>
+      <a href="casual.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/2f/63/c7/2f63c7d12c8f688ac10f94c5de7412cf.jpg" />
+          <p>Casual</p>
+        </div>
+      </a>
+      <a href="trousers.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/f0/bd/0d/f0bd0deebc4d11e902f532ada30bcb1f.jpg" />
+          <p>Trousers</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section id="makeup">
+    <h2>Makeup</h2>
+    <div class="product-cards">
+      <a href="Beauty Tools.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/36/be/d7/36bed73b76c8cf0f3966ffb12422a6ea.jpg" />
+          <p>Beauty Tools</p>
+        </div>
+      </a>
+      <a href="Eye Makeup.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/30/ac/de/30acde4cb9a32b8313a5705d69aafe76.jpg" />
+          <p>Eye Makeup</p>
+        </div>
+      </a>
+      <a href="Makeup Sets.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/b9/72/96/b97296e16aea47919107b3b6817cbebd.jpg" />
+          <p>Makeup Sets</p>
+        </div>
+      </a>
+      <a href="Face Makeup.html">
+        <div class="card">
+          <img src="https://i.pinimg.com/736x/2f/11/6f/2f116f755dedaf46a3ef8d0721f37b9d.jpg" />
+          <p>Face Makeup</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <p>&copy; 2025 VÈDA FASHION | Contact us: vedafashion@gmail.com</p>
+  </footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("dropdownMenu");
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  }
+
+  document.addEventListener("click", function(event) {
+    const menu = document.getElementById("dropdownMenu");
+    const icon = document.querySelector(".hamburger-icon");
+
+    if (!icon.contains(event.target) && !menu.contains(event.target)) {
+      menu.style.display = "none";
+    }
+  });
+</script>
+
+
+</body>
+</html>

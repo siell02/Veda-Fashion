@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flat Shoes - VÈDA FASHION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #D91656;
+      color: #333;
+    }
+    header {
+      background-color: #000000;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+	  font-family: 'Lora', serif;
+    }
+    .home-icon a {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+    }
+    .home-icon svg {
+      fill: white;
+      width: 100%;
+      height: 100%;
+      transition: fill 0.3s ease;
+      transform: scale(0.95);
+    }
+    .home-icon:hover svg {
+      fill: #CF0F47;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 40px 20px;
+      gap: 20px;
+    }
+    .product-card {
+      background-color: black;
+      border-radius: 10px;
+      width: 220px;
+      height: 350px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+    .product-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .product-info {
+      padding: 10px 15px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .product-info h2 {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+  min-height: 45px;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  font-weight: 400; 
+}
+
+    .price {
+      font-weight: bold;
+      margin: 10px 0;
+      color: #CF0F47;
+      text-align: center;
+	  font-family: 'Merriweather', serif;
+    }
+    .btn-group {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+   .btn {
+  background-color: white;
+  border: none;
+  color: Black;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: 'Merriweather', serif;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+    .btn:hover {
+      background-color: #CF0F47;
+    }
+   footer {       text-align: center;       padding: 20px;            background-color: black;                 color: white;                    font-family: 'Playfair Display', serif;                font-size: 1.2rem;                 } 
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Flat Shoes</h1>
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <div class="home-icon">
+      <a href="index.html" title="Back to Home">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 3L2 9h3v11h6V14h2v6h6V9h3z"/>
+        </svg>
+      </a>
+    </div>
+    <div class="home-icon">
+      <a href="cart.html" title="View Cart">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 
+            0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 
+            2-2-.9-2-2-2zM7.16 14.26l-.94-2.44L17 11l1.1 
+            2.59c.11.26.17.55.17.85 0 1.1-.9 2-2 
+            2H9.42c-.75 0-1.43-.41-1.76-1.06l-.5-1.12zM6.16 
+            9l1.1-2h11.45c.75 0 1.41.41 1.75 1.03l3.24 
+            6.5c.09.19.14.39.14.6 0 .83-.67 1.5-1.5 
+            1.5H8.53l-.94-2.44L6.16 9z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="product-grid">
+  <div class="product-card">
+  <a href="Bow Fringe Loafers.html">
+    <img src="Bow Fringe Loafers.jpeg" alt="Bow Fringe Loafers">
+    <div class="product-info">
+	</a>
+      <h2>Bow Fringe Loafers</h2>
+      <p class="price">200php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+<button class="btn buy-now">Buy Now</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+  <a href="Brown Flat Shoes With Flowers On Top.html">
+    <img src="Brown Flat Shoes With Flowers On Top.jpeg" alt="Brown Flat Shoes With Flowers On Top">
+    <div class="product-info">
+	</a>
+      <h2>Brown Flat Shoes With Flowers On Top</h2>
+      <p class="price">150php</p>
+      <div class="btn-group">
+       <button class="btn add-to-cart">Add to Cart</button>
+<button class="btn buy-now">Buy Now</button>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+  <a href="Pointed-Toe Bow Flats.html"> 
+    <img src="Pointed-Toe Bow Flats.jpeg" alt="Pointed-Toe Bow Flats">
+    <div class="product-info"></a>
+      <h2>Pointed-Toe Bow Flats</h2>
+      <p class="price">180php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+<button class="btn buy-now">Buy Now</button>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+  <a href="Women's Brown Flat Shoes With Bowknot Detail.html">
+    <img src="Women's Brown Flat Shoes With Bowknot Detail.jpeg" alt="Women's Brown Flat Shoes With Bowknot Detail">
+    <div class="product-info"></a>
+      <h2>Women's Brown Flat Shoes With Bowknot Detail</h2>
+      <p class="price">230php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+<button class="btn buy-now">Buy Now</button>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="product-card">
+  <a href="Peep Toe Flat Bow.html">
+    <img src="Peep Toe Flat Bow.jpeg" alt="Peep Toe Flat Bow">
+    <div class="product-info"></a>
+      <h2>Peep Toe Flat Bow</h2>
+      <p class="price">190php</p>
+      <div class="btn-group">
+        <button class="btn add-to-cart">Add to Cart</button>
+<button class="btn buy-now">Buy Now</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 VÈDA FASHION</p>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.product-card');
+        const name = card.querySelector('h2').innerText;
+        const price = card.querySelector('.price').innerText;
+        const img = card.querySelector('img').src;
+
+        const product = { name, price, img };
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push(product);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert(`${name} added to cart!`);
+      });
+    });
+  });
+</script>
+
+
+</body>
+</html>
+
+<script>
+const buyNowButtons = document.querySelectorAll('.buy-now');
+
+buyNowButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.product-card');
+    const name = card.querySelector('h2').innerText;
+    const price = card.querySelector('.price').innerText;
+    const img = card.querySelector('img').src;
+
+    const product = [{ name, price, img }];
+    localStorage.setItem('cart', JSON.stringify(product));
+    window.location.href = 'checkout.html';
+  });
+});
+</script>
+</body>
+</html>
+
