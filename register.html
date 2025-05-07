@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Register</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="register">
+    <form id="register-form">
+      <h1>Register</h1>
+      <label>Username</label>
+      <input type="text" id="reg-username" required>
+      <label>Password</label>
+      <input type="password" id="reg-password" required>
+      <button type="submit">Register</button>
+
+      <p align="center">Already have an account?
+        <a href="login.html" class="register-link">Log in here</a>
+      </p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('register-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById('reg-username').value.trim();
+      const password = document.getElementById('reg-password').value;
+
+      if (!username || !password) {
+        alert("Please enter both username and password.");
+        return;
+      }
+
+      const users = JSON.parse(localStorage.getItem('users')) || [];
+
+      const userExists = users.some(user => user.username === username);
+
+      if (userExists) {
+        alert("This username already exists. Please log in or use a different username.");
+        return;
+      }
+
+      users.push({ username, password });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      alert("Account successfully created! Please log in using your new account.");
+      window.location.href = "login.html";
+    });
+  </script>
+</body>
+</html>

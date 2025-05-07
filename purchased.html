@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Purchased Items - VÈDA FASHION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #D91656;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #000;
+      padding: 20px;
+      text-align: center;
+      font-family: 'Lora', serif;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #CF0F47;
+      border-radius: 10px;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      background-color: #000;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .item img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-right: 20px;
+      border-radius: 8px;
+    }
+
+    .item-details h3 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .item-details p {
+      margin: 5px 0;
+      font-family: 'Satisfy', cursive;
+    }
+
+    .cancel-btn {
+      background-color: #ff4d7d;
+      color: white;
+      border: none;
+      padding: 5px 15px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+    }
+
+    .cancel-btn:hover {
+      background-color: #ff1f5f;
+    }
+
+    .cancel-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cancel-modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      color: black;
+    }
+
+    .cancel-modal input, .cancel-modal button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    a.back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: white;
+      text-decoration: none;
+      font-family: 'Satisfy', cursive;
+    }
+
+    a.back:hover {
+      color: #ffe0ef;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Purchased Items</h1>
+  </header>
+
+  <div class="container" id="purchasedContainer">
+    <h2 style="text-align:center; font-family: 'Satisfy', cursive;">Here's what you've bought so far</h2>
+  </div>
+
+  <a class="back" href="index.html">&#8592; Back to Home</a>
+
+  <div class="cancel-modal" id="cancelModal">
+    <div class="cancel-modal-content">
+      <h3>Why do you want to cancel this item?</h3>
+      <input type="text" id="cancelReason" placeholder="Enter your reason here..." />
+      <button id="submitCancelBtn">Submit</button>
+      <button id="closeCancelBtn">Close</button>
+    </div>
+  </div>
+
+<script>
+  // Check if user is logged in
+  document.addEventListener('DOMContentLoaded', () => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (!isLoggedIn) {
+      alert("You must be logged in to view your purchased items. Redirecting to login...");
+      localStorage.setItem('redirectAfterLogin', 'purchased.html');
+      window.location.href = 'login.html';
+      return;
+    }
+
+    loadPurchasedItems();
+  });
+
+  function loadPurchasedItems() {
+    const container = document.getElementById('purchasedContainer');
+    const items = JSON.parse(localStorage.getItem('purchasedItems')) || [];
+    container.innerHTML = `
+      <h2 style="text-align:center; font-family: 'Satisfy', cursive;">Here's what you've bought so far</h2>
+    `;
+    if (items.length === 0) {
+      container.innerHTML += `<p style="text-align:center;">No purchases yet.</p>`;
+      return;
+    }
+    items.forEach((item, index) => {
+      const orderNumber = 10000 + index;
+      const div = document.createElement('div');
+      div.className = 'item';
+      div.innerHTML = `
+        <img src="${item.img}" alt="${item.name}" />
+        <div class="item-details">
+          <h3>${item.name}</h3>
+          <p>Order #: ${orderNumber}</p>
+          <p>Status: Purchased</p>
+        </div>
+        <button class="cancel-btn" onclick="showCancelModal(${index})">Cancel</button>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  let cancelIndex = null;
+
+  function showCancelModal(index) {
+    cancelIndex = index;
+    document.getElementById('cancelReason').value = '';
+    document.getElementById('cancelModal').style.display = 'flex';
+  }
+
+  function cancelItem() {
+    const reason = document.getElementById('cancelReason').value.trim();
+    if (reason === '') {
+      alert('Please provide a reason for cancellation.');
+      return;
+    }
+    const items = JSON.parse(localStorage.getItem('purchasedItems')) || [];
+    if (cancelIndex !== null && cancelIndex < items.length) {
+      items.splice(cancelIndex, 1);
+      localStorage.setItem('purchasedItems', JSON.stringify(items));
+      alert('Your item has been canceled successfully.');
+    }
+    document.getElementById('cancelModal').style.display = 'none';
+    loadPurchasedItems();
+  }
+
+  function closeCancelModal() {
+    document.getElementById('cancelModal').style.display = 'none';
+  }
+
+  document.getElementById('submitCancelBtn').onclick = cancelItem;
+  document.getElementById('closeCancelBtn').onclick = closeCancelModal;
+</script>
+
+</body>
+</html>
