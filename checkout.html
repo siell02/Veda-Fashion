@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkout - VÈDA FASHION</title>
+  <style>
+    body {
+      background-color: #D91656;
+      font-family: Arial, sans-serif;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: black;
+      padding: 20px;
+      text-align: center;
+      font-size: 2rem;
+      color: white;
+    }
+    .checkout-container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: black;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #CF0F47;
+      padding-bottom: 10px;
+    }
+    .item input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.5);
+    }
+    .item img {
+      width: 100px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 20px;
+      border-radius: 6px;
+    }
+    .item-info {
+      flex-grow: 1;
+    }
+    .item-info h3 {
+      margin: 0 0 5px;
+    }
+    .total {
+      font-size: 1.5rem;
+      text-align: right;
+      margin-top: 20px;
+    }
+    .btn {
+      background-color: #CF0F47;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      display: block;
+      margin: 30px auto 0;
+    }
+    .btn:hover {
+      background-color: #ff4d7d;
+    }
+       footer {
+      text-align: center;
+  padding: 20px;
+  background-color: black;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #CF0F47;
+      border-radius: 5px;
+    }
+    .payment-options {
+      margin-top: 20px;
+    }
+    .payment-options label {
+      display: inline-block;
+      width: 30%;
+      text-align: center;
+      padding: 10px;
+      border: 1px solid #CF0F47;
+      border-radius: 5px;
+      margin: 5px;
+      cursor: pointer;
+    }
+    .payment-options input[type="radio"] {
+      display: none;
+    }
+    .payment-options input[type="radio"]:checked + label {
+      background-color: #CF0F47;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+<header>Checkout</header>
+
+<div class="checkout-container" id="checkout-container">
+  <div>
+    <h3>Please provide your personal information:</h3>
+    <form id="personal-info-form">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required />
+      </div>
+      <div class="form-group">
+        <label for="address">Shipping Address</label>
+        <input type="text" id="address" required />
+      </div>
+      <div class="form-group">
+        <label for="contact">Contact Number</label>
+        <input type="tel" id="contact" required />
+      </div>
+      <div class="form-group payment-options">
+        <p style="font-size: 1.1rem;">Select Payment Method:</p>
+        <input type="radio" id="cod" name="payment" value="COD" />
+        <label for="cod">Cash on Delivery</label>
+
+        <input type="radio" id="gcash" name="payment" value="GCash" />
+        <label for="gcash">GCash E-wallet</label>
+
+        <input type="radio" id="card" name="payment" value="Card" />
+        <label for="card">Credit/Debit Card</label>
+      </div>
+    </form>
+  </div>
+
+  <div id="cart-items"></div>
+  <div class="total" id="total">Total: ₱0.00</div>
+
+  <button class="btn" id="complete-purchase-btn" disabled>Complete Purchase</button>
+</div>
+
+<footer>&copy; 2025 VÈDA FASHION</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (!isLoggedIn) {
+      alert("You must be logged in to proceed to checkout. Redirecting to login page...");
+      localStorage.setItem('redirectAfterLogin', 'checkout.html');
+      window.location.href = 'login.html';
+      return;
+    }
+
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const container = document.getElementById('cart-items');
+    const totalDiv = document.getElementById('total');
+    const btn = document.getElementById('complete-purchase-btn');
+    const form = document.getElementById('personal-info-form');
+
+    if (cart.length === 0) {
+      container.innerHTML = '<p>Your cart is empty.</p>';
+    } else {
+      cart.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'item';
+        div.innerHTML = `
+          <input type="checkbox" class="select-item" data-index="${index}">
+          <img src="${item.img}" alt="${item.name}">
+          <div class="item-info">
+            <h3>${item.name}</h3>
+            <p>Price: ₱${item.price.replace(/[^\d.]/g, '')}</p>
+            <p>${item.shade ? `Shade: ${item.shade}` : item.size ? `Size: ${item.size}` : ''}</p>
+            <p>Quantity: ${item.quantity}</p>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function calculateTotal() {
+      let total = 0;
+      document.querySelectorAll('.select-item:checked').forEach(cb => {
+        const item = cart[cb.dataset.index];
+        const price = parseFloat(item.price.replace(/[^\d.]/g, '')) || 0;
+        const quantity = parseInt(item.quantity) || 1;
+        total += price * quantity;
+      });
+      totalDiv.textContent = `Total: ₱${total.toFixed(2)}`;
+    }
+
+    function validateForm() {
+      const name = document.getElementById('name').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const contact = document.getElementById('contact').value.trim();
+      const payment = document.querySelector('input[name="payment"]:checked');
+      const selectedItems = document.querySelectorAll('.select-item:checked');
+      btn.disabled = !(name && address && contact && payment && selectedItems.length > 0);
+    }
+
+    form.addEventListener('input', validateForm);
+    document.querySelectorAll('input[name="payment"]').forEach(input => {
+      input.addEventListener('change', validateForm);
+    });
+
+    container.addEventListener('change', () => {
+      calculateTotal();
+      validateForm();
+    });
+
+    btn.addEventListener('click', () => {
+      const name = document.getElementById('name').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const contact = document.getElementById('contact').value.trim();
+      const payment = document.querySelector('input[name="payment"]:checked')?.value;
+      const selectedIndexes = [...document.querySelectorAll('.select-item:checked')].map(cb => parseInt(cb.dataset.index));
+
+      if (selectedIndexes.length > 0) {
+        const purchasedItems = JSON.parse(localStorage.getItem('purchasedItems')) || [];
+        const selectedItems = selectedIndexes.map(i => cart[i]);
+        const updatedPurchasedItems = [...purchasedItems, ...selectedItems];
+
+        const remainingCart = cart.filter((_, i) => !selectedIndexes.includes(i));
+
+        localStorage.setItem('purchasedItems', JSON.stringify(updatedPurchasedItems));
+        localStorage.setItem('cart', JSON.stringify(remainingCart));
+
+        alert(`Thank you for your purchase! Payment Method: ${payment}`);
+        window.location.href = 'purchased.html';
+
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

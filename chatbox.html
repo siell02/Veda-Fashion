@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat Box</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #fff;
+      padding: 30px;
+    }
+
+    .chat-container {
+      width: 90%;
+      max-width: 700px;
+      margin: auto;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      position: relative;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 15px;
+      background-color: #444;
+      color: #fff;
+      padding: 8px 15px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #D91656;
+    }
+
+    h2 {
+      text-align: center;
+      color: #D91656;
+      margin-bottom: 20px;
+    }
+
+    .messages {
+      height: 350px;
+      overflow-y: scroll;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #444;
+      padding-bottom: 15px;
+    }
+
+    .message {
+      margin: 12px 0;
+      padding: 10px 15px;
+      border-radius: 10px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .buyer {
+      background-color: #333;
+      text-align: left;
+    }
+
+    .seller {
+      background-color: #D91656;
+      text-align: right;
+      margin-left: auto;
+      color: #fff;
+    }
+
+    .send-message {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .send-message input[type="text"] {
+      padding: 12px;
+      border: 1px solid #444;
+      border-radius: 8px;
+      background-color: #111;
+      color: white;
+    }
+
+    .send-message input[type="file"] {
+      color: white;
+    }
+
+    .send-message button {
+      padding: 10px;
+      background-color: #D91656;
+      border: none;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .send-message button:hover {
+      background-color: #cf0f47;
+    }
+
+    .file-preview img,
+    .file-preview video {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .file-preview a {
+      color: #64b5f6;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<div class="chat-container">
+  
+  <a href="index.html" class="back-button">← Back to Home</a>
+
+  <h2>Chat with Seller</h2>
+  <div class="messages" id="messages"></div>
+  
+  <div class="send-message">
+    <input type="text" id="messageInput" placeholder="Type your message..." />
+    <input type="file" id="fileInput" />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<script>
+  const messagesContainer = document.getElementById('messages');
+  const messageInput = document.getElementById('messageInput');
+  const fileInput = document.getElementById('fileInput');
+
+  function loadMessages() {
+    const messages = JSON.parse(localStorage.getItem('messages')) || [];
+    messagesContainer.innerHTML = '';
+
+    messages.forEach(message => {
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'message ' + message.user;
+      
+      let content = `<strong>${message.user === 'buyer' ? 'Buyer' : 'Seller'}:</strong><br>${message.text || ''}`;
+      
+      if (message.file) {
+        const type = message.file.type;
+        if (type.startsWith('image/')) {
+          content += `<div class="file-preview"><img src="${message.file.data}" alt="Image" /></div>`;
+        } else if (type.startsWith('video/')) {
+          content += `<div class="file-preview"><video controls><source src="${message.file.data}" type="${type}"></video></div>`;
+        } else {
+          content += `<div class="file-preview"><a href="${message.file.data}" download="${message.file.name}">Download ${message.file.name}</a></div>`;
+        }
+      }
+
+      messageDiv.innerHTML = content;
+      messagesContainer.appendChild(messageDiv);
+    });
+
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function sendMessage() {
+    const text = messageInput.value.trim();
+    const file = fileInput.files[0];
+
+    if (!text && !file) return;
+
+    const user = document.title.toLowerCase().includes('buyer') ? 'buyer' : 'seller';
+
+    const newMessage = { user };
+
+    if (text) newMessage.text = text;
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        newMessage.file = {
+          name: file.name,
+          type: file.type,
+          data: e.target.result
+        };
+
+        saveAndRenderMessage(newMessage);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      saveAndRenderMessage(newMessage);
+    }
+
+    messageInput.value = '';
+    fileInput.value = '';
+  }
+
+  function saveAndRenderMessage(message) {
+    const messages = JSON.parse(localStorage.getItem('messages')) || [];
+    messages.push(message);
+    localStorage.setItem('messages', JSON.stringify(messages));
+    loadMessages();
+  }
+
+  window.onload = loadMessages;
+</script>
+
+</body>
+</html>
